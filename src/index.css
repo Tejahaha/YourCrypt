@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+/* ============================================
+   NEUBRUTALISM DESIGN SYSTEM
+   Bold, Raw, Expressive
+   ============================================ */
+
+:root {
+  /* Base Colors - Bold & Vibrant */
+  --color-background: #fafafa;
+  --color-text: #0a0a0a;
+  --color-border: #0a0a0a;
+
+  /* Vibrant Accent Colors */
+  --color-primary: #6366f1;
+  --color-secondary: #f59e0b;
+  --color-accent: #10b981;
+  --color-danger: #ef4444;
+  --color-info: #3b82f6;
+  --color-purple: #a855f7;
+  --color-pink: #ec4899;
+
+  /* Neubrutalism Shadows - Bold & Offset */
+  --shadow-brutal: 6px 6px 0px var(--color-border);
+  --shadow-brutal-sm: 3px 3px 0px var(--color-border);
+  --shadow-brutal-lg: 8px 8px 0px var(--color-border);
+  --shadow-brutal-xl: 12px 12px 0px var(--color-border);
+
+  /* Colored Shadows */
+  --shadow-primary: 6px 6px 0px var(--color-primary);
+  --shadow-secondary: 6px 6px 0px var(--color-secondary);
+  --shadow-accent: 6px 6px 0px var(--color-accent);
+
+  /* Border Thickness */
+  --border-thick: 3px;
+  --border-medium: 2px;
+  --border-thin: 1px;
+
+  /* Typography */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.5;
+  font-weight: 500;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[data-theme="dark"] {
+  /* Dark Mode - Calm & Monochromatic */
+  --color-background: #1a1a1a;
+  --color-card-bg: #2a2a2a;
+  --color-text: #d4d4d4;
+  --color-border: #4a4a4a;
+
+  /* Muted, Desaturated Colors - Easy on Eyes */
+  --color-primary: #7a8a9e;
+  --color-secondary: #b8956a;
+  --color-accent: #7a9e8a;
+  --color-danger: #b87a7a;
+  --color-info: #7a8ab8;
+  --color-purple: #9e7ab8;
+  --color-pink: #b87a9e;
+
+  /* Soft Gray Shadows - No Harsh Contrast */
+  --shadow-brutal: 6px 6px 0px #3a3a3a;
+  --shadow-brutal-sm: 3px 3px 0px #3a3a3a;
+  --shadow-brutal-lg: 8px 8px 0px #3a3a3a;
+  --shadow-brutal-xl: 12px 12px 0px #3a3a3a;
+
+  --shadow-primary: 6px 6px 0px #5a6a7e;
+  --shadow-secondary: 6px 6px 0px #98754a;
+  --shadow-accent: 6px 6px 0px #5a7e6a;
+}
+
+/* ============================================
+   GLOBAL STYLES
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--color-background);
+  color: var(--color-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  transition: background 0.3s ease, color 0.3s ease;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Decorative Grid Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 1;
+  background-image:
+    linear-gradient(var(--color-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* Light mode grid - more visible */
+:root body::before {
+  opacity: 0.08;
+}
+
+/* Dark mode grid - adjusted for visibility */
+[data-theme="dark"] body::before {
+  opacity: 0.12;
+}
+
+#root {
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--color-text);
+  font-family: 'Outfit', sans-serif;
+}
+
+button {
+  font-family: inherit;
+}
+
+input {
+  font-family: inherit;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.brutal-border {
+  border: var(--border-thick) solid var(--color-border);
+}
+
+.brutal-shadow {
+  box-shadow: var(--shadow-brutal);
+}
+
+.brutal-shadow-sm {
+  box-shadow: var(--shadow-brutal-sm);
+}
+
+.brutal-shadow-lg {
+  box-shadow: var(--shadow-brutal-lg);
+}
+
+.brutal-shadow-xl {
+  box-shadow: var(--shadow-brutal-xl);
+}
