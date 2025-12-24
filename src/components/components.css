@@ -259,7 +259,62 @@
 
 .password-display-container {
     margin-bottom: 0;
-    animation: slideUp 0.5s ease-out 0.2s backwards;
+    animation: fadeIn 0.5s ease-out 0.2s backwards;
+    position: relative;
+}
+
+/* Fun Arrow Pointer - Guides Eye to Password */
+.password-arrow {
+    position: absolute;
+    top: -50px;
+    left: -200px;
+    z-index: 10;
+    animation: arrowFloat 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+}
+
+.password-arrow svg {
+    width: 90px;
+    height: 90px;
+    color: var(--color-text);
+    opacity: 0.7;
+    transform: rotate(15deg) translateX(15px) translateY(5px);
+}
+
+.arrow-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text);
+    background: var(--color-secondary);
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    border: var(--border-medium) solid var(--color-border);
+    box-shadow: var(--shadow-brutal-sm);
+    white-space: nowrap;
+    transform: rotate(-3deg);
+    margin-bottom: -8px;
+    margin-left: 25px;
+}
+
+@keyframes arrowFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(-15px) translateX(-10px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(3px) translateX(3px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) translateX(0);
+    }
 }
 
 .password-display {
