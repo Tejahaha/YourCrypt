@@ -619,6 +619,36 @@
     border-radius: 8px 8px 0 0;
 }
 
+/* Strength Details */
+.strength-details {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.strength-detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+}
+
+.detail-label {
+    color: var(--color-text-light, #718096);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-value {
+    color: var(--color-text);
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+}
+
 /* ============================================
    ENCRYPT/GENERATE BUTTON COMPONENT
    ============================================ */

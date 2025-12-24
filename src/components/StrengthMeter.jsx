@@ -1,40 +1,55 @@
 import React from 'react';
 import './components.css';
 
-const StrengthMeter = ({ password, options }) => {
-    const calculateStrength = () => {
-        if (!password) return { level: 0, text: 'No password', color: '#6b7280' };
+/**
+ * StrengthMeter Component
+ * Displays password strength EXCLUSIVELY from backend calculations
+ * NO local strength calculation logic
+ */
+const StrengthMeter = ({ strength }) => {
+    // If no strength data from backend, show empty state
+    if (!strength) {
+        return (
+            <div className="strength-meter">
+                <div className="strength-header">
+                    <span className="strength-label">Password Strength</span>
+                    <span className="strength-text" style={{ color: '#6b7280' }}>
+                        No Password
+                    </span>
+                </div>
+                <div className="strength-bar-container">
+                    <div
+                        className="strength-bar"
+                        style={{
+                            width: '0%',
+                            backgroundColor: '#6b7280'
+                        }}
+                    ></div>
+                </div>
+            </div>
+        );
+    }
 
-        let strength = 0;
-        const { length, uppercase, lowercase, numbers, symbols } = options;
-
-        // Length contribution
-        if (length >= 8) strength += 1;
-        if (length >= 12) strength += 1;
-        if (length >= 16) strength += 1;
-
-        // Character variety contribution
-        if (uppercase) strength += 1;
-        if (lowercase) strength += 1;
-        if (numbers) strength += 1;
-        if (symbols) strength += 1;
-
-        // Determine strength level
-        if (strength <= 2) return { level: 1, text: 'Weak', color: '#f55353' };
-        if (strength <= 4) return { level: 2, text: 'Fair', color: '#feb139' };
-        if (strength <= 6) return { level: 3, text: 'Good', color: '#2ed573' };
-        return { level: 4, text: 'Strong', color: '#143f6b' };
+    // Map backend score (1-4) to color
+    const getColorForScore = (score) => {
+        switch (score) {
+            case 1: return '#b87a7a'; // Muted red (Very Weak/Weak)
+            case 2: return '#b8956a'; // Muted amber (Fair)
+            case 3: return '#7a9e8a'; // Muted green (Good)
+            case 4: return '#7a8a9e'; // Muted blue (Strong)
+            default: return '#6b7280';
+        }
     };
 
-    const strength = calculateStrength();
-    const percentage = (strength.level / 4) * 100;
+    const color = getColorForScore(strength.score);
+    const percentage = (strength.score / 4) * 100;
 
     return (
         <div className="strength-meter">
             <div className="strength-header">
                 <span className="strength-label">Password Strength</span>
-                <span className="strength-text" style={{ color: strength.color }}>
-                    {strength.text}
+                <span className="strength-text" style={{ color }}>
+                    {strength.label}
                 </span>
             </div>
             <div className="strength-bar-container">
@@ -42,10 +57,26 @@ const StrengthMeter = ({ password, options }) => {
                     className="strength-bar"
                     style={{
                         width: `${percentage}%`,
-                        backgroundColor: strength.color
+                        backgroundColor: color
                     }}
                 ></div>
             </div>
+
+            {/* Display additional strength metrics from backend */}
+            {strength.entropy_bits !== undefined && (
+                <div className="strength-details">
+                    <div className="strength-detail-item">
+                        <span className="detail-label">Entropy:</span>
+                        <span className="detail-value">{strength.entropy_bits.toFixed(1)} bits</span>
+                    </div>
+                    {strength.estimated_crack_time && (
+                        <div className="strength-detail-item">
+                            <span className="detail-label">Crack Time:</span>
+                            <span className="detail-value">{strength.estimated_crack_time}</span>
+                        </div>
+                    )}
+                </div>
+            )}
         </div>
     );
 };

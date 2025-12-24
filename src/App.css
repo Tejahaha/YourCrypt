@@ -25,13 +25,26 @@
 
 .warning-text {
   text-align: center;
-  color: var(--color-secondary);
-  font-weight: 600;
+  color: var(--color-accent);
+  font-weight: 500;
   font-size: 0.875rem;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   animation: pulse 2s ease-in-out infinite;
   grid-column: 1 / -1;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.error-text {
+  text-align: center;
+  color: var(--color-danger);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--color-card-bg, white);
+  border: var(--border-medium) solid var(--color-danger);
+  border-radius: 12px;
+  box-shadow: var(--shadow-brutal-sm);
+  grid-column: 1 / -1;
 }
 
 /* ============================================
