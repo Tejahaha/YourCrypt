@@ -30,25 +30,32 @@ const StrengthMeter = ({ strength }) => {
         );
     }
 
-    // Map backend score (1-4) to color
+    // Map backend score (1-4) to vibrant colors (red to green)
     const getColorForScore = (score) => {
         switch (score) {
-            case 1: return '#b87a7a'; // Muted red (Very Weak/Weak)
-            case 2: return '#b8956a'; // Muted amber (Fair)
-            case 3: return '#7a9e8a'; // Muted green (Good)
-            case 4: return '#7a8a9e'; // Muted blue (Strong)
-            default: return '#6b7280';
+            case 1: return { bar: '#ef4444', text: '#ef4444', bg: '#fee2e2' }; // Vibrant red (Very Weak/Weak)
+            case 2: return { bar: '#f59e0b', text: '#f59e0b', bg: '#fef3c7' }; // Vibrant amber (Fair)
+            case 3: return { bar: '#10b981', text: '#10b981', bg: '#d1fae5' }; // Vibrant green (Good)
+            case 4: return { bar: '#059669', text: '#059669', bg: '#a7f3d0' }; // Deep green (Strong)
+            default: return { bar: '#6b7280', text: '#6b7280', bg: '#f3f4f6' };
         }
     };
 
-    const color = getColorForScore(strength.score);
+    const colors = getColorForScore(strength.score);
     const percentage = (strength.score / 4) * 100;
 
     return (
         <div className="strength-meter">
             <div className="strength-header">
                 <span className="strength-label">Password Strength</span>
-                <span className="strength-text" style={{ color }}>
+                <span
+                    className="strength-text"
+                    style={{
+                        color: colors.text,
+                        backgroundColor: colors.bg,
+                        borderColor: colors.bar
+                    }}
+                >
                     {strength.label}
                 </span>
             </div>
@@ -57,7 +64,7 @@ const StrengthMeter = ({ strength }) => {
                     className="strength-bar"
                     style={{
                         width: `${percentage}%`,
-                        backgroundColor: color
+                        backgroundColor: colors.bar
                     }}
                 ></div>
             </div>

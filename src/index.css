@@ -48,30 +48,30 @@
 }
 
 [data-theme="dark"] {
-  /* Dark Mode - Calm & Monochromatic */
-  --color-background: #1a1a1a;
-  --color-card-bg: #2a2a2a;
-  --color-text: #d4d4d4;
-  --color-border: #4a4a4a;
+  /* Dark Mode - Darker versions of light mode colors */
+  --color-background: #0f0f0f;
+  --color-card-bg: #1a1a1a;
+  --color-text: #e5e5e5;
+  --color-border: #2a2a2a;
 
-  /* Muted, Desaturated Colors - Easy on Eyes */
-  --color-primary: #7a8a9e;
-  --color-secondary: #b8956a;
-  --color-accent: #7a9e8a;
-  --color-danger: #b87a7a;
-  --color-info: #7a8ab8;
-  --color-purple: #9e7ab8;
-  --color-pink: #b87a9e;
+  /* Darker versions of the same vibrant colors */
+  --color-primary: #4f46e5;
+  --color-secondary: #d97706;
+  --color-accent: #059669;
+  --color-danger: #dc2626;
+  --color-info: #2563eb;
+  --color-purple: #9333ea;
+  --color-pink: #db2777;
 
-  /* Soft Gray Shadows - No Harsh Contrast */
-  --shadow-brutal: 6px 6px 0px #3a3a3a;
-  --shadow-brutal-sm: 3px 3px 0px #3a3a3a;
-  --shadow-brutal-lg: 8px 8px 0px #3a3a3a;
-  --shadow-brutal-xl: 12px 12px 0px #3a3a3a;
+  /* Darker shadows matching the darker theme */
+  --shadow-brutal: 6px 6px 0px #1a1a1a;
+  --shadow-brutal-sm: 3px 3px 0px #1a1a1a;
+  --shadow-brutal-lg: 8px 8px 0px #1a1a1a;
+  --shadow-brutal-xl: 12px 12px 0px #1a1a1a;
 
-  --shadow-primary: 6px 6px 0px #5a6a7e;
-  --shadow-secondary: 6px 6px 0px #98754a;
-  --shadow-accent: 6px 6px 0px #5a7e6a;
+  --shadow-primary: 6px 6px 0px #3730a3;
+  --shadow-secondary: 6px 6px 0px #b45309;
+  --shadow-accent: 6px 6px 0px #047857;
 }
 
 /* ============================================
@@ -89,10 +89,8 @@ body {
   min-height: 100vh;
   background: var(--color-background);
   color: var(--color-text);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
+  display: block;
+  padding: 0;
   transition: background 0.3s ease, color 0.3s ease;
   position: relative;
   overflow-x: hidden;
@@ -127,8 +125,6 @@ body::before {
 
 #root {
   width: 100%;
-  max-width: 1400px;
-  padding: 0 1rem;
   position: relative;
   z-index: 1;
 }

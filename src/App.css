@@ -1,26 +1,28 @@
 .app-container {
   width: 100%;
-  padding: 2rem 0;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 2rem;
   animation: fade-in 0.8s ease-out;
 }
 
 .app-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: 2rem;
   align-items: start;
 }
 
 .left-column {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .right-column {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .warning-text {
